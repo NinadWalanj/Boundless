@@ -45,11 +45,11 @@ Route53 global DNS
   │
   ├► Region 1 primary
   │     Write API → RDS primary → Outbox table → Kafka producer
-  │     Read API  → Redis → RDS primary
+  │     Read API  → RDS primary
   │
   └► Region 2 replica
-        Kafka consumer → RDS replica → Redis
-        Read API → Redis → RDS replica
+        Kafka consumer → RDS replica
+        Read API → RDS replica
 ```
 
 
@@ -71,7 +71,7 @@ Ingress in EKS
 Kubernetes Service → Write API deployment → RDS primary
                                    │
                                    ↓
-                                Outbox table → Kafka → Region 2 consumer → RDS replica → Redis
+                                Outbox table → Kafka → Region 2 consumer → RDS replica
 ```
 
 
