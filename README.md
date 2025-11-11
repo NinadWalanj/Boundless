@@ -37,6 +37,7 @@ With this design, the system is strongly consistent for writes because there is 
 
 ## Data Flow Overview
 
+```text
 Client
   │
   ↓
@@ -48,11 +49,13 @@ Route53 global DNS
   │
   └► Region 2 replica
         Kafka consumer → RDS replica → Redis
-        Read API       → Redis → RDS replica
+        Read API → Redis → RDS replica
+```
 
 
 ## End-to-End Request Example
 
+```text
 Client browser
    │
    ↓
@@ -69,7 +72,7 @@ Kubernetes Service → Write API deployment → RDS primary
                                    │
                                    ↓
                                 Outbox table → Kafka → Region 2 consumer → RDS replica → Redis
-
+```
 
 
 ## Tech stack
